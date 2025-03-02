@@ -19,11 +19,11 @@ const projects = [
     demo: "https://ecommerce-demo.herokuapp.com"
   },
   {
-    title: "Travelling Guide & Booking Website",
-    image:'./TravellingGuide.png',
-    description: "Independently developed a responsive website showcasing world wild tourist destinations.",
-    technologies: ["ReactJS"],
-    github: "https://github.com/ShehanSanjula123/Travel-Guide-Booking",
+    title: "Restaurant Website",
+    image:'./Resturent.png',
+    description: "Responsive and User Friendly full stack website of Restaurant Reservation with Admin pannel.",
+    technologies: ["React", "ExpressJS", "MongoDB"],
+    github: "https://github.com/ShehanSanjula123/Resturant_Website_React",
     demo: "https://weather-dash-demo.netlify.app"
   },
   {
