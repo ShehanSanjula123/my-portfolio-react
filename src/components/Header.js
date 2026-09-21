@@ -1,47 +1,104 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react'
-import { Moon, Sun } from 'lucide-react'
+import { useState } from "react";
+import { Menu, X, Moon, Sun, FileText } from "lucide-react";
 
 export default function Header({ darkMode, toggleDarkMode }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Experience", href: "#experience" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Education", href: "#education" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold text-blue-600 dark:text-blue-400">Shehan Sanjula</a>
-        <div className="flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200/70 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/90">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+
+        {/* Logo */}
+        <a
+          href="#home"
+          onClick={closeMenu}
+          className="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
+        >
+          Shehan<span className="text-blue-600">.</span>
+        </a>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden items-center gap-7 lg:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Actions */}
+        <div className="flex items-center gap-2">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 mr-4"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
             aria-label="Toggle dark mode"
           >
-            {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+            {darkMode ? <Sun size={19} /> : <Moon size={19} />}
           </button>
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-            aria-label="Toggle menu"
+
+          <a
+            href="/Shehan-Sanjula-Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600 dark:bg-white dark:text-slate-900 dark:hover:bg-blue-500 dark:hover:text-white sm:flex"
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <FileText size={16} />
+            Resume
+          </a>
+
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 lg:hidden"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
-      <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block bg-white dark:bg-gray-800 md:bg-transparent`}>
-        <ul className="container mx-auto px-4 py-2 md:py-0 flex flex-col md:flex-row md:items-center">
-          <li><a href="#home" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
-          <li><a href="#about" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">About</a></li>
-          <li><a href="#projects" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">Projects</a></li>
-          <li><a href="#skills" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">Skills</a></li>
-          <li><a href="#education" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">Education</a></li>
-          <li><a href="#contact" className="block py-2 md:px-4 hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
-        </ul>
-      </nav>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav className="border-t border-gray-200 bg-white px-5 py-5 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={closeMenu}
+                className="rounded-lg px-3 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-blue-600 dark:text-slate-300 dark:hover:bg-slate-900 dark:hover:text-blue-400"
+              >
+                {link.name}
+              </a>
+            ))}
+
+            <a
+              href="/Shehan-Sanjula-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white"
+            >
+              <FileText size={16} />
+              View Resume
+            </a>
+          </div>
+        </nav>
+      )}
     </header>
-  )
+  );
 }

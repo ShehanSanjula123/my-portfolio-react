@@ -1,48 +1,112 @@
-const AboutPage = () => {
+import {
+  Code2,
+  GraduationCap,
+  MapPin,
+  Target,
+  ArrowUpRight,
+} from "lucide-react";
+
+export default function About() {
+  const details = [
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Colombo, Sri Lanka",
+    },
+    {
+      icon: Code2,
+      label: "Focus",
+      value: "Full-Stack Development",
+    },
+    {
+      icon: GraduationCap,
+      label: "Education",
+      value: "BSc (Hons) Computing & IS",
+    },
+    {
+      icon: Target,
+      label: "Current Goal",
+      value: "Associate / Junior SE",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white pt-20">
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">About Me</h1>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
-            <div className="bg-gray-700 border-none p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Who I Am</h2>
-              <p>
-              I am a dedicated undergraduate specializing in Computing and Information Systems at Sabaragamuwa University of Sri Lanka. 
-              With a focus on ReactJS, ExpressJS, and React Native, I am passionate about full-stack development. Eager to apply 
-              my skills and knowledge during an internship, I aim to contribute effectively to dynamic projects while continuing to grow in the IT industry.
-              </p>
-            </div>
-            <div className="bg-gray-700 border-none p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">My Journey</h2>
-              <p>
-              From the early days of exploring coding fundamentals to developing full-fledged applications, my journey has been one of continuous learning and growth. 
-              Through academic projects and self-driven initiatives, I have honed my skills in full-stack development, particularly with ReactJS, ExpressJS, and React Native. 
-              Each step has reinforced my passion for creating innovative solutions and contributing to impactful projects.
-              </p>
-            </div>
-            <div className="bg-gray-700 border-none p-6 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-4">Beyond Coding</h2>
-              <p>
-              When I'm not immersed in development, I enjoy exploring innovative technologies, staying updated on industry trends, and collaborating on creative projects. 
-              I also value spending quality time outdoors, engaging in productive discussions, and finding inspiration from the world around me. 
-              For me, a well-rounded approach to life fuels creativity and enhances my problem-solving abilities.
-              </p>
-            </div>
+    <section
+      id="about"
+      className="bg-slate-50 py-24 dark:bg-slate-900/40 sm:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+        {/* Section Header */}
+        <div className="mb-14 max-w-2xl">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+            About Me
+          </p>
+
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+            Building software with purpose.
+          </h2>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+
+          {/* About Content */}
+          <div>
+            <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
+              I have completed all academic requirements for a{" "}
+              <span className="font-semibold text-slate-900 dark:text-white">
+                BSc (Hons) in Computing and Information Systems
+              </span>{" "}
+              at Sabaragamuwa University of Sri Lanka.
+            </p>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
+              Through my software engineering internship and academic projects,
+              I have gained hands-on experience across full-stack web and mobile
+              development. I enjoy building user-focused interfaces, integrating
+              APIs, developing backend functionality, and turning practical
+              requirements into working software solutions.
+            </p>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-400">
+              I'm currently looking for an Associate or Junior Software Engineer
+              opportunity where I can contribute to real products, collaborate
+              with development teams, and continue growing as an engineer.
+            </p>
+
+            <a
+              href="#experience"
+              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:gap-3 dark:text-blue-400"
+            >
+              See my experience
+              <ArrowUpRight size={17} />
+            </a>
           </div>
-          <div className="flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
-              <img
-                src="/MyPhoto_new-removebg-preview.png"
-                alt="John Doe"
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
+
+          {/* Quick Details */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {details.map(({ icon: Icon, label, value }) => (
+              <div
+                key={label}
+                className="group rounded-xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-slate-200/50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/40 dark:hover:shadow-black/20"
+              >
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
+                  <Icon size={19} />
+                </div>
+
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  {label}
+                </p>
+
+                <p className="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  {value}
+                </p>
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default AboutPage;
+}

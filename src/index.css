@@ -15,3 +15,54 @@ code {
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+}
+
+::selection {
+  background: #2563eb;
+  color: white;
+}
+
+.social-link {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.6rem;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  color: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.dark .social-link {
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark .social-link:hover {
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+

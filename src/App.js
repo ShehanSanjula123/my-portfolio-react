@@ -7,6 +7,7 @@ import Skills from './components/Skills'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Experience from "./components/Experience";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false)
@@ -18,16 +19,22 @@ export default function App() {
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
       <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <main>
-          <LandingPage />
-          <About />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
-        </main>
-        <Footer />
+       <Header
+  darkMode={darkMode}
+  toggleDarkMode={toggleDarkMode}
+/>
+
+<main>
+  <LandingPage />
+  <About />
+  <Experience />
+  <Projects />
+  <Skills />
+  <Education />
+  <Contact />
+</main>
+
+<Footer />
       </div>
     </div>
   )
