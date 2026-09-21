@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 import Experience from "./components/Experience";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
