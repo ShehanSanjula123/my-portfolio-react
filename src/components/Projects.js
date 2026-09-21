@@ -32,7 +32,7 @@ const projects = [
     image: "/imarket.jpg",
 
     // Add real URL only
-    github: "",
+    github: "https://github.com/oncodetechsolution/imarketmobile",
     live: "",
   },
 
@@ -60,7 +60,7 @@ const projects = [
 
     image: "/interview.png",
 
-    github: "",
+    github: "https://github.com/ShehanSanjula123/ai-interview-coach",
     live: "",
   },
 
@@ -83,7 +83,7 @@ const projects = [
 
     image: "/mobile frontPage.jpeg",
 
-    github: "",
+    github: "https://github.com/Amindu-sathsara/Capstone_project-20-21-",
     live: "",
   },
 ];
